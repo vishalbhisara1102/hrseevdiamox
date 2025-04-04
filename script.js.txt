@@ -1,0 +1,41 @@
+const products = [
+  {
+    id: 1,
+    name: "1.00 Carat Round Diamond",
+    clarity: "VVS1",
+    color: "D",
+    price: "₹2,00,000",
+    image: "https://via.placeholder.com/300x200?text=Diamond+1"
+  },
+  {
+    id: 2,
+    name: "1.25 Carat Princess Diamond",
+    clarity: "VS2",
+    color: "E",
+    price: "₹2,50,000",
+    image: "https://via.placeholder.com/300x200?text=Diamond+2"
+  }
+];
+
+const productList = document.getElementById("product-list");
+
+products.forEach(product => {
+  const div = document.createElement("div");
+  div.className = "product";
+  div.innerHTML = 
+    <img src="${product.image}" alt="${product.name}">
+    <h2>${product.name}</h2>
+    <p>Clarity: ${product.clarity}</p>
+    <p>Color: ${product.color}</p>
+    <p><strong>${product.price}</strong></p>
+    <button onclick="inquire('${product.name}', '${product.price}')">Inquire Now</button>
+  ;
+  productList.appendChild(div);
+});
+
+function inquire(name, price) {
+  const message = Hello, I'm interested in the ${name} priced at ${price}. Please share more details.;
+  const phoneNumber = "91XXXXXXXXXX"; // <-- Your WhatsApp number
+  const url = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
+  window.open(url, "_blank");
+}
